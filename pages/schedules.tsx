@@ -181,15 +181,13 @@ export default function SchedulePage() {
     const formatScheduleText = () => {
         if (!schedule) return ""
       
-        let text = "Hasil Jadwal\n"
+        let text = "Hasil Jadwal - Made By System\n"
         days.forEach((day) => {
           text += `${day}\n`
           outlets.forEach((outlet) => {
             const pagi = schedule[day]?.pagi?.[outlet]?.join(" ") || ""
             const malam = schedule[day]?.malam?.[outlet]?.join(" ") || ""
-            if (pagi || malam) {
-              text += `${outlet}: ${pagi} - ${malam}\n`
-            }
+            text += `${outlet}: ${pagi} - ${malam}\n`
           })
           text += "\n"
         })
@@ -271,7 +269,7 @@ export default function SchedulePage() {
 
       {schedule && (
         <div className="mt-8">
-            <h2 className="text-lg font-bold mb-4">Hasil Jadwal</h2>
+            <h2 className="text-lg font-bold mb-4">Hasil Jadwal - Made By System</h2>
 
             {/* Tombol copy, textarea editable, dan kirim ke WA */}
             <div className="mb-4">
