@@ -181,7 +181,7 @@ export default function SchedulePage() {
     const formatScheduleText = () => {
         if (!schedule) return ""
       
-        let text = "Hasil Jadwal - Made By System\n"
+        let text = "Result Schedule - Made By System\n"
         days.forEach((day) => {
           text += `${day}\n`
           outlets.forEach((outlet) => {
@@ -269,61 +269,61 @@ export default function SchedulePage() {
 
       {schedule && (
         <div className="mt-8">
-            <h2 className="text-lg font-bold mb-4">Hasil Jadwal - Made By System</h2>
+          <h2 className="text-lg font-bold mb-4">Result Schedule - Made By System</h2>
 
-            {/* Tombol copy, textarea editable, dan kirim ke WA */}
-            <div className="mb-4">
-                <textarea
-                    className="w-full h-60 p-2 border rounded text-sm font-mono"
-                    value={customScheduleText}
-                    onChange={(e) => setCustomScheduleText(e.target.value)}
-                />
-                <div className="flex gap-2 mt-2">
-                    <button
-                        onClick={copyToClipboard}
-                        className="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700"
-                        >
-                        Copy to Clipboard
-                    </button>
-
-
-                    {/* <button
-                        onClick={() => {
-                            const encodedText = encodeURIComponent(customScheduleText);
-                            const waUrl = `https://wa.me/?text=${encodedText}`;
-                            window.open(waUrl, "_blank");
-                        }}
-                        className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
-                        >
-                        Send to WhatsApp
-                    </button> */}
-
-                </div>
-            </div>
-
-
-            {/* Tampilan biasa */}
-            <div className="space-y-4">
+          {/* Tampilan biasa */}
+          <div className="space-y-4">
             {days.map((day) => (
-                <div key={day}>
-                <h3 className="text-md font-semibold">{day}</h3>
-                {outlets.map((outlet) => {
-                    const pagi = schedule[day]?.pagi?.[outlet]?.join(" ") || ""
-                    const malam = schedule[day]?.malam?.[outlet]?.join(" ") || ""
-                    return (
-                    <div key={outlet} className="ml-4">
-                        <span className="font-medium">{outlet}:</span>{" "}
-                        {pagi || malam ? `${pagi} - ${malam}` : ""}
-                    </div>
-                    )
+              <div key={day}>
+              <h3 className="text-md font-semibold">{day}</h3>
+              {outlets.map((outlet) => {
+                const pagi = schedule[day]?.pagi?.[outlet]?.join(" ") || ""
+                const malam = schedule[day]?.malam?.[outlet]?.join(" ") || ""
+                return (
+                  <div key={outlet} className="ml-4">
+                      <span className="font-medium">{outlet}:</span>{" "}
+                      {pagi || malam ? `${pagi} - ${malam}` : ""}
+                  </div>
+                  )
                 })}
-                </div>
+              </div>
             ))}
+          </div>
+
+          {/* Tombol copy, textarea editable, dan kirim ke WA */}
+          <div className="my-4">
+            <h2 className="text-lg font-bold mb-4">Edit Schedules</h2>
+
+            <textarea
+                className="w-full h-60 p-2 border rounded text-sm font-mono"
+                value={customScheduleText}
+                onChange={(e) => setCustomScheduleText(e.target.value)}
+            />
+            <div className="flex gap-2 mt-2">
+                <button
+                    onClick={copyToClipboard}
+                    className="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700"
+                    >
+                    Copy to Clipboard
+                </button>
+
+
+                {/* <button
+                    onClick={() => {
+                        const encodedText = encodeURIComponent(customScheduleText);
+                        const waUrl = `https://wa.me/?text=${encodedText}`;
+                        window.open(waUrl, "_blank");
+                    }}
+                    className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    >
+                    Send to WhatsApp
+                </button> */}
+
             </div>
+          </div>
+          
         </div>
-        )}
-
-
+      )}
     </div>
   )
 }
